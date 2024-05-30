@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Post from './Post';
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: "Gin2511",
+      caption: "My waifu <3",
+      imageUrl: "https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"
+    },
+    {
+      username: "DEFYLover",
+      caption: "Last event",
+      imageUrl: "https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"
+    }
+  ]);
+
   return (
     <div className="App">
       <div className="app__header">
@@ -16,10 +29,16 @@ function App() {
 
       <h1>lets fking gooo</h1>
 
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+
+      {
+        posts.map(post => (
+          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+        ))
+      }
+
+
+      {/* <Post username="Gin2511" caption="My waifu <3" imageUrl="https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"/>
+      <Post username="DEFYLover" caption="Last event" imageUrl="https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"/> */}
     
     {/* Header */}
 
