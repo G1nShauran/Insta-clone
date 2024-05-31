@@ -4,23 +4,15 @@ import Post from './Post';
 import {db} from './firebase';
 
 function App() {
-  const [posts, setPosts] = useState([
-    // {
-    //   username: "Gin2511",
-    //   caption: "My waifu <3",
-    //   imageUrl: "https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"
-    // },
-    // {
-    //   username: "DEFYLover",
-    //   caption: "Last event",
-    //   imageUrl: "https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"
-    // }
-  ]);
+  const [posts, setPosts] = useState([]);
 
   // useEffect
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
-      setPosts(snapshot.docs.map(doc => doc.data()));
+      setPosts(snapshot.docs.map(doc => ({
+        id: doc.id,
+        post: doc.data()
+      })));
     })
   }, []);
 
@@ -41,14 +33,11 @@ function App() {
 
 
       {
-        posts.map(post => (
-          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+        posts.map(({id, post}) => (
+          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
         ))
       }
 
-
-      {/* <Post username="Gin2511" caption="My waifu <3" imageUrl="https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"/>
-      <Post username="DEFYLover" caption="Last event" imageUrl="https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"/> */}
     
     {/* Header */}
 
