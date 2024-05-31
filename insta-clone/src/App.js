@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Post from './Post';
+import {db} from './firebase';
 
 function App() {
   const [posts, setPosts] = useState([
-    {
-      username: "Gin2511",
-      caption: "My waifu <3",
-      imageUrl: "https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"
-    },
-    {
-      username: "DEFYLover",
-      caption: "Last event",
-      imageUrl: "https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"
-    }
+    // {
+    //   username: "Gin2511",
+    //   caption: "My waifu <3",
+    //   imageUrl: "https://iopwiki.com/images/6/65/Lee-Enfield_costume4_D.png"
+    // },
+    // {
+    //   username: "DEFYLover",
+    //   caption: "Last event",
+    //   imageUrl: "https://iopwiki.com/images/7/77/Dual_Randomness_Login_Wallpaper.png"
+    // }
   ]);
+
+  // useEffect
+  useEffect(() => {
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data()));
+    })
+  }, []);
+
+
 
   return (
     <div className="App">
