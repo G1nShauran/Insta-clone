@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Input } from '@mui/material';
+import ImageUpload from './ImageUpload';
 
 const useStyles = {
   position: 'absolute',
@@ -86,6 +87,12 @@ function App() {
 
   return (
     <div className="App">
+
+      {/* caption input */}
+      {/* file pickler */}
+      {/* post button */}
+      <ImageUpload/>
+
 
 
       {/* signup */}
