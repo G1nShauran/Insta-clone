@@ -7,15 +7,22 @@
   
 }
 
+.app__posts{
+  padding: 20px;
+}
+
 .app__header {
   object-fit: contain;
   background-color: white;
   padding: 20px;
   border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
 }
 
 .app__headerImage{
   height: 40px;
+  object-fit: contain;
 }
 
 .app__signup{

@@ -87,18 +87,7 @@ function App() {
 
   return (
     <div className="App">
-
-      {/* caption input */}
-      {/* file pickler */}
-      {/* post button */}
-
-      {user?.displayName ? (
-        <ImageUpload username = {user.displayName} />
-      ) : (
-        <h3>You need to login to upload</h3>
-      )}
-      
-      
+  
       {/* signup */}
       <Modal
         open={open}
@@ -194,21 +183,19 @@ function App() {
         alt=""
       />
 
+      {user ?(
+        <Button onClick={() => auth.signOut()}>Logout</Button>
+      ): (
+        <div className="app__loginContainer">
+          <Button onClick={() => setOpenSignIn(true)}>Sign in</Button>
+          <Button onClick={() => setOpen(true)}>Sign up</Button>
+        </div>
+        
+      )}
       
     </div>
 
-    {user ?(
-      <Button onClick={() => auth.signOut()}>Logout</Button>
-    ): (
-      <div className="app__loginContainer">
-        <Button onClick={() => setOpenSignIn(true)}>Sign in</Button>
-        <Button onClick={() => setOpen(true)}>Sign up</Button>
-      </div>
-      
-    )}
-
-      <h1>lets fking gooo</h1>
-
+    <div className='app__posts'>
 
       {
         posts.map(({id, post}) => (
@@ -216,6 +203,15 @@ function App() {
         ))
       }
 
+    </div>
+
+      
+
+      {user?.displayName ? (
+        <ImageUpload username = {user.displayName} />
+      ) : (
+        <h3>You need to login to upload</h3>
+      )}
     
     {/* Header */}
 
