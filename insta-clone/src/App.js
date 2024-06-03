@@ -52,7 +52,7 @@ function App() {
 
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
         post: doc.data()
@@ -91,10 +91,14 @@ function App() {
       {/* caption input */}
       {/* file pickler */}
       {/* post button */}
-      <ImageUpload/>
 
-
-
+      {user?.displayName ? (
+        <ImageUpload username = {user.displayName} />
+      ) : (
+        <h3>You need to login to upload</h3>
+      )}
+      
+      
       {/* signup */}
       <Modal
         open={open}
@@ -106,7 +110,7 @@ function App() {
             <center>
               <img 
                 className="app__headerImage"
-                src="https://cdn.discordapp.com/attachments/873498894389100596/1245762945103696003/imgbin_camera-logo-png.png?ex=6659eea7&is=66589d27&hm=174ff2a907dc3555e5eb693160c7b5dcfa5a966bf3af598084f9f6749266d0f0&"
+                src="https://cdn.discordapp.com/attachments/873498894389100596/1245762945103696003/imgbin_camera-logo-png.png?ex=665c91a7&is=665b4027&hm=33a22466c19eb9dd74a4ef1ce6131ddb0d446b3debe880987055495411783062&"
                 alt=""
               />
 
@@ -186,7 +190,7 @@ function App() {
       <div className="app__header">
       <img 
         className="app__headerImage"
-        src="https://cdn.discordapp.com/attachments/873498894389100596/1245762945103696003/imgbin_camera-logo-png.png?ex=6659eea7&is=66589d27&hm=174ff2a907dc3555e5eb693160c7b5dcfa5a966bf3af598084f9f6749266d0f0&"
+        src="https://i.imgur.com/Zgznk2c.png"
         alt=""
       />
 
