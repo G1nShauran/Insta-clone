@@ -9,9 +9,13 @@
 
 .app__posts{
   padding: 20px;
+  justify-content: center;
 }
 
 .app__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   object-fit: contain;
   background-color: white;
   padding: 20px;

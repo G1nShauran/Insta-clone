@@ -99,7 +99,7 @@ function App() {
             <center>
               <img 
                 className="app__headerImage"
-                src="https://cdn.discordapp.com/attachments/873498894389100596/1245762945103696003/imgbin_camera-logo-png.png?ex=665c91a7&is=665b4027&hm=33a22466c19eb9dd74a4ef1ce6131ddb0d446b3debe880987055495411783062&"
+                src="https://i.imgur.com/Zgznk2c.png"
                 alt=""
               />
 
@@ -146,7 +146,7 @@ function App() {
             <center>
               <img 
                 className="app__headerImage"
-                src="https://cdn.discordapp.com/attachments/873498894389100596/1245762945103696003/imgbin_camera-logo-png.png?ex=6659eea7&is=66589d27&hm=174ff2a907dc3555e5eb693160c7b5dcfa5a966bf3af598084f9f6749266d0f0&"
+                src="https://i.imgur.com/Zgznk2c.png"
                 alt=""
               />
 
@@ -199,7 +199,7 @@ function App() {
 
       {
         posts.map(({id, post}) => (
-          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+          <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
         ))
       }
 
