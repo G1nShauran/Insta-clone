@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { storage, db } from "./firebase";
+import { db } from "./firebase";
 import './Post.css';
 import Avatar from '@mui/material/Avatar';
 import firebase from 'firebase/compat/app';
@@ -58,7 +58,10 @@ function Post({ postId, user, username, caption, imageUrl }) {
 
       <h4 className='post__text'><strong>{username}</strong> {caption}</h4>
 
+      
+
       <div className='post__comments'>
+      <h4>Comment:</h4>
         {comments.map((comment) => (
           <p>
             <b>{comment.username}</b>{comment.text}

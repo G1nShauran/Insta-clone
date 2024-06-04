@@ -174,7 +174,7 @@ function App() {
 
         </Box>
       </Modal>
-
+    
 
       <div className="app__header">
       <img 
@@ -195,6 +195,17 @@ function App() {
       
     </div>
 
+    <div className='app__imgUploadForm'>
+      {user?.displayName ? (
+        <ImageUpload username = {user.displayName} />
+      ) : (
+        <h3>You need to login to upload</h3>
+      )}
+    </div>
+      
+
+      
+
     <div className='app__posts'>
 
       {
@@ -207,11 +218,7 @@ function App() {
 
       
 
-      {user?.displayName ? (
-        <ImageUpload username = {user.displayName} />
-      ) : (
-        <h3>You need to login to upload</h3>
-      )}
+      
     
     {/* Header */}
 
