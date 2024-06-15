@@ -1,15 +1,32 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { storage, db } from "./firebase";
 import firebase from 'firebase/compat/app';
 import './ImageUpload.css';
-
-function ImageUpload({username}) {
-
+import {auth} from './firebase';
+function ImageUpload() {
+  const [user, setUser] = useState(null);
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState('');
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if( authUser) {
+        //login
+        console.log(authUser);
+        setUser(authUser);
 
+      } else {
+        //logout
+        setUser(null);
+      }
+    })
+
+    return () => {
+      //perform clearup action
+      unsubscribe();
+    }
+  }, [user]);  
   const handleChange = (e) => {
     if (e.target.files[0]){
       setImage(e.target.files[0]);
@@ -42,10 +59,11 @@ function ImageUpload({username}) {
         .then(url => {
           // post img inside db
           db.collection("posts").add({
+            idUser: user.uid,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             caption: caption,
             imageUrl: url,
-            username: username
+            username: user.displayName
           });
 
           setProgress(0);
