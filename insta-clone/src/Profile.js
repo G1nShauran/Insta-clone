@@ -61,11 +61,19 @@ function Profile() {
   return (
     <div className='Profile'>
         <div className="app__header">
-            <img 
+            <div>
+
+            <Button onClick={() => {
+                navigate("/");
+            }
+                }>            
+                <img 
                 className="app__headerImage"
                 src="https://i.imgur.com/Zgznk2c.png"
                 alt=""
-            />
+            /></Button>
+            </div>
+
 
             {user ?(
                 <Button onClick={() => {

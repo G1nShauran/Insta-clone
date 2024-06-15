@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = {
   position: 'absolute',
@@ -30,6 +31,8 @@ function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   // useEffect
   useEffect(() => {
@@ -109,6 +112,7 @@ function Home() {
                 src="https://i.imgur.com/Zgznk2c.png"
                 alt=""
               />
+              
 
             </center>
 
@@ -156,6 +160,7 @@ function Home() {
                 src="https://i.imgur.com/Zgznk2c.png"
                 alt=""
               />
+              
 
             </center>
 
@@ -184,11 +189,15 @@ function Home() {
     
 
       <div className="app__header">
-      <img 
-        className="app__headerImage"
-        src="https://i.imgur.com/Zgznk2c.png"
-        alt=""
-      />
+      <Button onClick={() => {
+                navigate("/");
+            }
+                }><img 
+                className="app__headerImage"
+                src="https://i.imgur.com/Zgznk2c.png"
+                alt=""
+              /></Button>
+
 
       {user ?(
         <div className="app__loginContainer">
